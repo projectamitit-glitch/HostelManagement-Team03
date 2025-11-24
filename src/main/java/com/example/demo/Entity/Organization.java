@@ -2,7 +2,6 @@ package com.example.demo.Entity;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,15 +13,15 @@ public class Organization {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private int id;
+
 	private String name;
 	private String ownerName;
 	private String address;
 	private String contactNo;
 	private String email;
 
-	@OneToMany(mappedBy = "organization", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "organization")
 	private List<Hostel> hostels;
 
 	public int getId() {
