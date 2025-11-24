@@ -1,15 +1,8 @@
 package com.example.demo.Entity;
 
 import java.util.List;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 @Entity
 public class Hostel {
@@ -27,10 +20,12 @@ public class Hostel {
 	private String website;
 
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	@JoinColumn(name = "organizationId", referencedColumnName = "id")
 	private Organization organization;
 
 	@OneToMany(mappedBy = "hostel")
+	@JsonIgnore
 	private List<Building> buildings;
 
 	public String getImage() {
@@ -103,6 +98,14 @@ public class Hostel {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public List<Building> getBuildings() {
+		return buildings;
+	}
+
+	public void setBuildings(List<Building> buildings) {
+		this.buildings = buildings;
 	}
 
 }

@@ -1,12 +1,8 @@
 package com.example.demo.Entity;
 
 import java.util.List;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 @Entity
 public class Organization {
@@ -22,6 +18,7 @@ public class Organization {
 	private String email;
 
 	@OneToMany(mappedBy = "organization")
+	@JsonIgnore
 	private List<Hostel> hostels;
 
 	public int getId() {
