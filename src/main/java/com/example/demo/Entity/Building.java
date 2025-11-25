@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 
 @Entity
 public class Building {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
