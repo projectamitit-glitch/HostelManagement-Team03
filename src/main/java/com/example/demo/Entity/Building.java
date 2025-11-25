@@ -1,6 +1,5 @@
 package com.example.demo.Entity;
 
-
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -20,8 +19,8 @@ public class Building {
 	@JsonIgnore
 	@JoinColumn(name = "hostelId", referencedColumnName = "id")
 	private Hostel hostel;
-	
-	@OneToMany(mappedBy = "building" )
+
+	@OneToMany(mappedBy = "building")
 	@JsonIgnore
 	private List<Floor> floors;
 
@@ -72,5 +71,5 @@ public class Building {
 	public void setFloors(List<Floor> floors) {
 		this.floors = floors;
 	}
-	
+
 }
