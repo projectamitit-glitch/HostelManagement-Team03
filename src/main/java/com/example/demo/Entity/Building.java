@@ -12,7 +12,7 @@ public class Building {
 	private int id;
 
 	private String name;
-	private int noOfFloors;
+	private int noOfFloors;//
 	private String warden;
 
 	@ManyToOne(cascade = CascadeType.ALL)
