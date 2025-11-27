@@ -1,22 +1,23 @@
 package com.example.demo.dto;
 
 public class BuildingDto {
-	
-	
+
 	private String name;
-	private int noOfFloors;
+	private int floorCount;
 	private String warden;
+	
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getNoOfFloors() {
-		return noOfFloors;
+	public int getFloorCount() {
+		return floorCount;
 	}
-	public void setNoOfFloors(int noOfFloors) {
-		this.noOfFloors = noOfFloors;
+	public void setFloorCount(int floorCount) {
+		this.floorCount = floorCount;
 	}
 	public String getWarden() {
 		return warden;
@@ -24,10 +25,7 @@ public class BuildingDto {
 	public void setWarden(String warden) {
 		this.warden = warden;
 	}
-	
-	
-	
-	
+
 	
 
 }
