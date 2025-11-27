@@ -11,7 +11,7 @@ public class Floor {
 	private int id;
 	
 	private int floorNo;
-	private int noOfRooms;
+	private int roomCount;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -38,12 +38,13 @@ public class Floor {
 		this.floorNo = floorNo;
 	}
 
-	public int getNoOfRooms() {
-		return noOfRooms;
+	
+	public int getRoomCount() {
+		return roomCount;
 	}
 
-	public void setNoOfRooms(int noOfRooms) {
-		this.noOfRooms = noOfRooms;
+	public void setRoomCount(int roomCount) {
+		this.roomCount = roomCount;
 	}
 
 	public Building getBuilding() {

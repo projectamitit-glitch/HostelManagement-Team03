@@ -28,7 +28,7 @@ public class BuildingServiceImpl implements BuildingService {
 		Building building = new Building();
 
 		building.setName(buildingDto.getName());
-		building.setNoOfFloors(buildingDto.getNoOfFloors());
+		building.setFloorCount(0);
 		building.setWarden(buildingDto.getWarden());
 
 		building.setHostel(hostel);

@@ -12,7 +12,7 @@ public class Building {
 	private int id;
 
 	private String name;
-	private int noOfFloors;//
+	private int floorCount;//
 	private String warden;
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -48,12 +48,14 @@ public class Building {
 		this.name = name;
 	}
 
-	public int getNoOfFloors() {
-		return noOfFloors;
+	
+
+	public int getFloorCount() {
+		return floorCount;
 	}
 
-	public void setNoOfFloors(int noOfFloors) {
-		this.noOfFloors = noOfFloors;
+	public void setFloorCount(int floorCount) {
+		this.floorCount = floorCount;
 	}
 
 	public Hostel getHostel() {
