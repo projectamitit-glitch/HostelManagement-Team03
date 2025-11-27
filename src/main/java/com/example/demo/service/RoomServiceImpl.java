@@ -34,9 +34,16 @@ public class RoomServiceImpl implements RoomService {
 		room.setRoomNo(roomDto.getRoomNo());
 		room.setSharing(roomDto.getSharing());
 		room.setType(roomDto.getType());
-		
+
 		room.setFloor(floor);
-		roomRepository.save(room);
+
+		try {
+			Room room2 = roomRepository.save(room);
+			floor.setRoomCount(floor.getRoomCount() + 1);
+			floorRepository.save(floor);
+		} catch (RoomServiceException roomServiceException) {
+			throw new RoomServiceException("Error occured while saving floor", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 }
