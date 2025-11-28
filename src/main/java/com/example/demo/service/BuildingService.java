@@ -12,13 +12,12 @@ public interface BuildingService {
 
 	public void saveBuilding(BuildingDto buildingDto, int hostelId);
 
-	Building getBuildingById(int id);
+	  BuildingDto getBuildingById(int id);
 
-	List<Building> getAllBuildings();
+	    List<BuildingDto> getAllBuildings();
 
-	void deleteBuildingById(int id);
+	    void deleteBuildingById(int id);
 
-	void deleteAllBuildings();
-
+	    void deleteAllBuildings();
 
 }

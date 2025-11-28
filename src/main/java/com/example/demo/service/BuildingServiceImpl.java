@@ -35,55 +35,47 @@ public class BuildingServiceImpl implements BuildingService {
 
 		building.setHostel(hostel);
 
-		try {
-			buildingRepository.save(building);
-		}
+		buildingRepository.save(building);
 
-		catch (BuildingServiceException buildingServiceException) {
-			throw new BuildingServiceException("Error occurred while saving building: ",
-					HttpStatus.INTERNAL_SERVER_ERROR);
-
-		}
+		throw new BuildingServiceException("Error occurred while saving building: ", HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}
 
 	@Override
-	public Building getBuildingById(int id) {
-		try {
-			Building building = buildingRepository.findById(id).get();
-			return building;
-		} catch (Exception e) {
-			throw new BuildingServiceException("building not found with ID: " + id, HttpStatus.NOT_FOUND);
-		}
+	public BuildingDto getBuildingById(int id) {
+
+		Building building = buildingRepository.findById(id).get();
+
+		throw new BuildingServiceException("Cannot delete. Building not found with ID: " + id, HttpStatus.NOT_FOUND);
+
 	}
 
 	@Override
-	public List<Building> getAllBuildings() {
-		try {
-			return buildingRepository.findAll();
-		} catch (Exception e) {
-			throw new BuildingServiceException("Error while fetching all building", HttpStatus.NOT_FOUND);
-		}
+	public List<BuildingDto> getAllBuildings() {
+		buildingRepository.findAll();
+
+		throw new BuildingServiceException("Cannot delete. Building not found", HttpStatus.NOT_FOUND);
 	}
 
 	@Override
 	public void deleteBuildingById(int id) {
-		try {
-			Building building = buildingRepository.findById(id).get();
-			buildingRepository.deleteById(id);
-		} catch (Exception e) {
-			throw new BuildingServiceException("Cannot delete. Building not found with ID: " + id,
-					HttpStatus.NOT_FOUND);
+
+		if (!buildingRepository.existsById(id)) {
+			throw new BuildingServiceException("Building not found", HttpStatus.NOT_FOUND);
 		}
+
+		buildingRepository.deleteById(id);
+
 	}
 
 	@Override
 	public void deleteAllBuildings() {
-		try {
-			buildingRepository.deleteAll();
-		} catch (Exception e) {
-			throw new BuildingServiceException("Error while deleting all Building", HttpStatus.NOT_FOUND);
+
+		if (buildingRepository.findAll().isEmpty()) {
+			throw new BuildingServiceException("No buildings available to delete.", HttpStatus.NOT_FOUND);
 		}
+
+		buildingRepository.deleteAll();
 	}
 
 }
