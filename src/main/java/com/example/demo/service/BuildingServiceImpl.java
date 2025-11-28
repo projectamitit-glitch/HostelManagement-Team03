@@ -53,7 +53,7 @@ public class BuildingServiceImpl implements BuildingService {
 			Building building = buildingRepository.findById(id).get();
 			return building;
 		} catch (Exception e) {
-			throw new BuildingServiceException("building not found with ID: " + id, null);
+			throw new BuildingServiceException("building not found with ID: " + id, HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -62,7 +62,7 @@ public class BuildingServiceImpl implements BuildingService {
 		try {
 			return buildingRepository.findAll();
 		} catch (Exception e) {
-			throw new BuildingServiceException("Error while fetching all building", null);
+			throw new BuildingServiceException("Error while fetching all building", HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -72,7 +72,8 @@ public class BuildingServiceImpl implements BuildingService {
 			Building building = buildingRepository.findById(id).get();
 			buildingRepository.deleteById(id);
 		} catch (Exception e) {
-			throw new BuildingServiceException("Cannot delete. Organization not found with ID: " + id, null);
+			throw new BuildingServiceException("Cannot delete. Building not found with ID: " + id,
+					HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -81,7 +82,7 @@ public class BuildingServiceImpl implements BuildingService {
 		try {
 			buildingRepository.deleteAll();
 		} catch (Exception e) {
-			throw new BuildingServiceException("Error while deleting all organizations", null);
+			throw new BuildingServiceException("Error while deleting all Building", HttpStatus.NOT_FOUND);
 		}
 	}
 
