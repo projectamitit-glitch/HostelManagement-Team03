@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.constant.Constant;
 import com.example.demo.dto.FloorDto;
 import com.example.demo.service.FloorService;
 
@@ -19,6 +21,6 @@ public class FloorController {
 	@PostMapping("floor/{buildingID}")
 	ResponseEntity<String> addFloor(@RequestBody FloorDto floordto, @PathVariable int buildingID) {
 		floorService.saveFloor(floordto, buildingID);
-		return new ResponseEntity<>("floor added", HttpStatus.CREATED);
+		return new ResponseEntity<>(Constant.FLOOR_SAVED, HttpStatus.CREATED);
 	}
 }

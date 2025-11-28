@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Entity.Building;
 import com.example.demo.Entity.Hostel;
+import com.example.demo.constant.ErrorConstant;
 import com.example.demo.dto.BuildingDto;
 import com.example.demo.exception.BuildingServiceException;
 import com.example.demo.repository.BuildingRepository;
@@ -25,7 +26,7 @@ public class BuildingServiceImpl implements BuildingService {
 	public void saveBuilding(BuildingDto buildingDto, int hostelId) {
 
 		Hostel hostel = hostelRepository.findById(hostelId)
-				.orElseThrow(() -> new BuildingServiceException("hostel not found", HttpStatus.NOT_FOUND));
+				.orElseThrow(() -> new BuildingServiceException(ErrorConstant.HOSTEL_NOT_FOUND , HttpStatus.NOT_FOUND));
 
 		Building building = new Building();
 
@@ -64,7 +65,9 @@ public class BuildingServiceImpl implements BuildingService {
 			throw new BuildingServiceException("Building not found", HttpStatus.NOT_FOUND);
 		}
 
-		buildingRepository.deleteById(id);
+		catch (BuildingServiceException buildingServiceException) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_SAVE_EXCEPTION,
+					HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}
 
