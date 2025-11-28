@@ -4,5 +4,6 @@ import com.example.demo.dto.BedDto;
 
 public interface BedService {
 
+	
 	void addBed(BedDto bedDto);
 }

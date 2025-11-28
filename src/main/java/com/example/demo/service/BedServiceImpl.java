@@ -10,10 +10,8 @@ import com.example.demo.dto.BedDto;
 import com.example.demo.exception.BedServiceException;
 import com.example.demo.repository.BedRepository;
 import com.example.demo.repository.RoomRepository;
-
 @Service
 public class BedServiceImpl implements BedService {
-
 	@Autowired
 	private BedRepository bedRepository;
 
