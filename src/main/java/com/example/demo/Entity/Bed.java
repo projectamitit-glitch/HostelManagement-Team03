@@ -5,20 +5,20 @@ import jakarta.persistence.*;
 
 @Entity
 public class Bed {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private int bedNo;
 	private String status;
 	private int price;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
-	@JoinColumn(name="roomId", referencedColumnName = "id")
+	@JoinColumn(name = "roomId", referencedColumnName = "id")
 	private Room room;
-	
+
 	@OneToOne(mappedBy = "bed")
 	@JsonIgnore
 	private User user;
@@ -70,8 +70,5 @@ public class Bed {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
-	
 
 }

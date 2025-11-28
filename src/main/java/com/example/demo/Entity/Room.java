@@ -14,7 +14,7 @@ public class Room {
 	private int roomNo;
 	private int sharing;
 	private String type;
-
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
 	@JoinColumn(name = "floorId", referencedColumnName = "id")
@@ -71,7 +71,6 @@ public class Room {
 	public void setBeds(List<Bed> beds) {
 		this.beds = beds;
 	}
-	
 	
 
 
