@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.constant.Constant;
 import com.example.demo.dto.OrganizationDto;
 import com.example.demo.service.OrganizationService;
 
@@ -19,7 +20,7 @@ public class OrganizationController {
 	@PostMapping("organization")
 	ResponseEntity addOrganization(@RequestBody OrganizationDto organizationDto) {
 		organizationService.addOrganization(organizationDto);
-		return new ResponseEntity("Organization Added", HttpStatus.CREATED);
+		return new ResponseEntity(Constant.ORGANIZATION_SAVED, HttpStatus.CREATED);
 		
 	}
 
