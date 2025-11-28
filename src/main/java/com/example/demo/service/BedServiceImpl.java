@@ -10,19 +10,21 @@ import com.example.demo.dto.BedDto;
 import com.example.demo.exception.BedServiceException;
 import com.example.demo.repository.BedRepository;
 import com.example.demo.repository.RoomRepository;
+
 @Service
 public class BedServiceImpl implements BedService {
-	@Autowired
-	private BedRepository bedRepository;
 
 	@Autowired
-	private RoomRepository roomRepository;
+ BedRepository bedRepository;
+
+	@Autowired
+ RoomRepository roomRepository;
 
 	@Override
 	public void addBed(BedDto bedDto) {
 		Room room = roomRepository.findById(bedDto.getRoomId()).orElse(null);
 		if (room == null) {
-			throw new BedServiceException("Room not found with id: " + bedDto.getRoomId(), HttpStatus.NOT_FOUND);
+			throw new BedServiceException("Room not found", HttpStatus.NOT_FOUND);
 		}
 
 		Bed bed = new Bed();
@@ -34,7 +36,7 @@ public class BedServiceImpl implements BedService {
 		try {
 			bedRepository.save(bed);
 		} catch (Exception e) {
-			throw new BedServiceException("Failed to save bed: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new BedServiceException("Failed to save bed ", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 }

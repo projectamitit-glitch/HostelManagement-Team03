@@ -37,9 +37,9 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(exception = BedServiceException.class)
-	public ResponseEntity<String> handleBedServiceException(BedServiceException handleBedServiceException) {
-		return new ResponseEntity<String>(handleBedServiceException.getMessage(),
-				handleBedServiceException.getHttpStatus());
+	public ResponseEntity<String> handleBedServiceException(BedServiceException BedServiceException) {
+		return new ResponseEntity<String>(BedServiceException.getMessage(),
+				BedServiceException.getHttpStatus());
 	}
 
 }

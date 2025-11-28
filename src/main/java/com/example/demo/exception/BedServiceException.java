@@ -20,7 +20,5 @@ public class BedServiceException extends RuntimeException {
 		return httpStatus;
 	}
 
-	public void setHttpStatus(HttpStatus httpStatus) {
-		this.httpStatus = httpStatus;
-	}
+	
 }

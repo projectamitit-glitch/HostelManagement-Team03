@@ -18,6 +18,6 @@ public class BedController {
 	@PostMapping("bed/{roomId}")
 	public ResponseEntity addBed(@RequestBody BedDto bedDto) {
 		bedService.addBed(bedDto);
-		return new ResponseEntity("Bed Added", HttpStatus.ACCEPTED);
+		return new ResponseEntity("Bed Added", HttpStatus.CREATED);
 	}
 }
