@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,69 +17,86 @@ import com.example.demo.repository.HostelRepository;
 
 @Service
 public class BuildingServiceImpl implements BuildingService {
-	@Autowired
-	BuildingRepository buildingRepository;
+	
+    @Autowired
+    BuildingRepository buildingRepository;
 
-	@Autowired
-	HostelRepository hostelRepository;
+    @Autowired
+    HostelRepository hostelRepository;
 
-	@Override
-	public void saveBuilding(BuildingDto buildingDto, int hostelId) {
+    @Override
+    public void saveBuilding(BuildingDto buildingDto, int hostelId) {
 
-		Hostel hostel = hostelRepository.findById(hostelId)
-				.orElseThrow(() -> new BuildingServiceException(ErrorConstant.HOSTEL_NOT_FOUND , HttpStatus.NOT_FOUND));
+        Hostel hostel = hostelRepository.findById(hostelId)
+                .orElseThrow(() -> new BuildingServiceException(
+                        ErrorConstant.HOSTEL_NOT_FOUND, HttpStatus.NOT_FOUND));
 
-		Building building = new Building();
+        Building building = new Building();
+        building.setName(buildingDto.getName());
+        building.setFloorCount(buildingDto.getFloorCount());
+        building.setWarden(buildingDto.getWarden());
+        building.setHostel(hostel);
 
-		building.setName(buildingDto.getName());
-		building.setFloorCount(0);
-		building.setWarden(buildingDto.getWarden());
+        buildingRepository.save(building);
+    }
 
-		building.setHostel(hostel);
+  
+    @Override
+    public BuildingDto getBuildingById(int id) {
 
-		buildingRepository.save(building);
+        Building building = buildingRepository.findById(id)
+                .orElseThrow(() -> new BuildingServiceException(
+                        ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND));
 
-		throw new BuildingServiceException("Error occurred while saving building: ", HttpStatus.INTERNAL_SERVER_ERROR);
+        BuildingDto dto = new BuildingDto();
+        dto.setName(building.getName());
+        dto.setFloorCount(building.getFloorCount());
+        dto.setWarden(building.getWarden());
 
-	}
+        return dto;
+    }
 
-	@Override
-	public BuildingDto getBuildingById(int id) {
+    
+    @Override
+    public List<BuildingDto> getAllBuildings() {
 
-		Building building = buildingRepository.findById(id).get();
+        List<Building> buildings = buildingRepository.findAll();
 
-		throw new BuildingServiceException("Cannot delete. Building not found with ID: " + id, HttpStatus.NOT_FOUND);
+        if (buildings.isEmpty()) {
+            throw new BuildingServiceException(
+                    ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+        }
 
-	}
+        return buildings.stream().map(b -> {
+            BuildingDto dto = new BuildingDto();
+            dto.setName(b.getName());
+            dto.setFloorCount(b.getFloorCount());
+            dto.setWarden(b.getWarden());
+            return dto;
+        }).collect(Collectors.toList());
+    }
 
-	@Override
-	public List<BuildingDto> getAllBuildings() {
-		buildingRepository.findAll();
+  
+    @Override
+    public void deleteBuildingById(int id) {
 
-		throw new BuildingServiceException("Cannot delete. Building not found", HttpStatus.NOT_FOUND);
-	}
+        if (!buildingRepository.existsById(id)) {
+            throw new BuildingServiceException(
+                    ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+        }
 
-	@Override
-	public void deleteBuildingById(int id) {
+        buildingRepository.deleteById(id);
+    }
 
-		if (!buildingRepository.existsById(id)) {
-			throw new BuildingServiceException("Building not found", HttpStatus.NOT_FOUND);
-		}
+  
+    @Override
+    public void deleteAllBuildings() {
 
-		catch (BuildingServiceException buildingServiceException) {
-			throw new BuildingServiceException(ErrorConstant.BUILDING_SAVE_EXCEPTION,
-					HttpStatus.INTERNAL_SERVER_ERROR);
+        if (buildingRepository.findAll().isEmpty()) {
+            throw new BuildingServiceException(
+                    ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+        }
 
-	}
-
-	@Override
-	public void deleteAllBuildings() {
-
-		if (buildingRepository.findAll().isEmpty()) {
-			throw new BuildingServiceException("No buildings available to delete.", HttpStatus.NOT_FOUND);
-		}
-
-		buildingRepository.deleteAll();
-	}
-
+        buildingRepository.deleteAll();
+    }
 }
