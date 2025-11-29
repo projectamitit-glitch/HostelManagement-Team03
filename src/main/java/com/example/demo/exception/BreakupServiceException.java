@@ -8,7 +8,7 @@ public class BreakupServiceException extends RuntimeException {
 
 	@Override
 	public String getMessage() {
-		return super.getMessage();
+		return errorMessage;
 	}
 
 	public HttpStatus getHttpStatus() {
@@ -16,7 +16,6 @@ public class BreakupServiceException extends RuntimeException {
 	}
 
 	public BreakupServiceException(String errorMessage, HttpStatus httpStatus) {
-		super();
 		this.errorMessage = errorMessage;
 		this.httpStatus = httpStatus;
 	}
