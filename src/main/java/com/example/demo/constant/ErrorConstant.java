@@ -8,9 +8,18 @@ public class ErrorConstant {
 	
 	public static final String	BUILDING_NOT_FOUND="BUILDING NOT FOUND.";
 	public static final String HOSTEL_NOT_FOUND="HOSTEL NOT FOUND.";
+	public static final String BED_NOT_FOUND="BED NOT FOUND.";
+	public static final String USER_NOT_FOUND="USER NOT FOUND.";
+	
+	
 	
 	public static final String FLOOR_SAVE_EXCEPTION="ERROR OCCURED WHILE SAVING THE FLOOR.";
 	public static final String BUILDING_SAVE_EXCEPTION="ERROR OCCURED WHILE SAVING THE BUILDING.";
+	public static final String USER_SAVE_EXCEPTION="ERROR OCCCURED WHILE SAVING THE USER.";
+	
+	
+	public static final String USER_LIST_EMPTY="ERROR OCCCURED WHILE USER LIST IS EMPTY.";
+	
 	
 
 }
