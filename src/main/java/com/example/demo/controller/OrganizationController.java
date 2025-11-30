@@ -14,35 +14,37 @@ import com.example.demo.service.OrganizationService;
 
 @RestController
 public class OrganizationController {
-	
+
 	@Autowired
 	OrganizationService organizationService;
-	
-	@PostMapping("addOrganization")
+
+	@PostMapping("organization")
 	ResponseEntity addOrganization(@RequestBody OrganizationDto organizationDto) {
 		organizationService.addOrganization(organizationDto);
 		return new ResponseEntity("Organization Added", HttpStatus.CREATED);
-		
+
 	}
-	
-	@GetMapping("getOrganization/{id}")
+
+	@GetMapping("organization/{id}")
 	public ResponseEntity getOrganizationById(@PathVariable int id) {
-	    return new ResponseEntity<>(organizationService.getOrganizationById(id), HttpStatus.OK);
+		return new ResponseEntity<>(organizationService.getOrganizationById(id), HttpStatus.OK);
 	}
-	
-	@GetMapping("getAllOrganizations")
+
+	@GetMapping("organizations")
 	public ResponseEntity getAllOrganizations() {
-	    return new ResponseEntity<>(organizationService.getAllOrganizations(), HttpStatus.OK);
+		return new ResponseEntity<>(organizationService.getAllOrganizations(), HttpStatus.OK);
 	}
+
 	@DeleteMapping("organization/{id}")
 	public ResponseEntity deleteOrganizationById(@PathVariable int id) {
-	    organizationService.deleteOrganizationById(id);
-	    return new ResponseEntity<>("Organization Deleted with ID: " + id, HttpStatus.OK);
+		organizationService.deleteOrganizationById(id);
+		return new ResponseEntity<>("Organization Deleted with ID: " + id, HttpStatus.OK);
 	}
-	@DeleteMapping("DeleteAllOrganizations")
+
+	@DeleteMapping("organizations")
 	public ResponseEntity deleteAllOrganizations() {
-	    organizationService.deleteAllOrganizations();
-	    return new ResponseEntity<>("All Organizations Deleted", HttpStatus.OK);
+		organizationService.deleteAllOrganizations();
+		return new ResponseEntity<>("All Organizations Deleted", HttpStatus.OK);
 	}
 
 }
