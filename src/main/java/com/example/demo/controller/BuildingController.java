@@ -22,32 +22,33 @@ public class BuildingController {
 	BuildingService buildingService;
 
 	@PostMapping("building/{hostelId}")
-	public ResponseEntity addBuilding(@RequestBody BuildingDto buildingDto, @PathVariable int hostelId) {
-
-		buildingService.saveBuilding(buildingDto, hostelId);
-		return new ResponseEntity(Constant.BUILDING_SAVED, HttpStatus.CREATED);
+	public ResponseEntity addBuilding(@RequestBody BuildingDto buildingDto,@PathVariable int hostelId) {
+		
+		buildingService.saveBuilding(buildingDto,hostelId);
+		return new ResponseEntity (Constant.BUILDING_SAVED,HttpStatus.CREATED);
 	}
 
+	
+	
 	@GetMapping("/buildings/{id}")
 	public ResponseEntity<BuildingDto> getbuildingbyId(@PathVariable int id) {
-		return new ResponseEntity(buildingService.getBuildingById(id), HttpStatus.OK);
+	    return new ResponseEntity (buildingService.getBuildingById(id), HttpStatus.OK);
 	}
 
 	@GetMapping("/getAllbuildings")
-	public ResponseEntity<BuildingDto> getAllbuildings() {
-		return new ResponseEntity(buildingService.getAllBuildings(), HttpStatus.OK);
+	public ResponseEntity getAllbuildings() {
+	    return new ResponseEntity(buildingService.getAllBuildings(), HttpStatus.OK);
 	}
-
 	@DeleteMapping("/deletebuilding/{id}")
 	public ResponseEntity deletebuildingById(@PathVariable int id) {
-		buildingService.deleteBuildingById(id);
-		return new ResponseEntity("Building Deleted with ID: " + id, HttpStatus.OK);
+	    buildingService.deleteBuildingById(id);
+	    return new ResponseEntity("Building Deleted with ID: " + id, HttpStatus.OK);
 	}
-
 	@DeleteMapping("/DeleteAllbuildings")
 	public ResponseEntity deleteAllbuilding() {
-		buildingService.deleteAllBuildings();
-		return new ResponseEntity("All Building Deleted", HttpStatus.OK);
+	    buildingService.deleteAllBuildings();
+	    return new ResponseEntity("All Building Deleted", HttpStatus.OK);
 	}
+
 
 }
