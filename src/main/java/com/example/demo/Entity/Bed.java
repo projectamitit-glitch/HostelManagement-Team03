@@ -19,7 +19,7 @@ public class Bed {
 	@JoinColumn(name = "roomId", referencedColumnName = "id")
 	private Room room;
 
-	@OneToOne(mappedBy = "bed")
+	@OneToOne(mappedBy = "bed",cascade = CascadeType.ALL)
 	@JsonIgnore
 	private User user;
 
