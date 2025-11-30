@@ -25,7 +25,7 @@ public class User {
 	private String guardianName;
 	private String guardianContact;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JsonIgnore
 	@JoinColumn(name = "bedId", referencedColumnName = "id")
 	private Bed bed;

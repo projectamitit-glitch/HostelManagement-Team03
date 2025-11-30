@@ -1,6 +1,5 @@
 package com.example.demo.Entity;
 
-
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -15,12 +14,12 @@ public class Building {
 	private int floorCount;//
 	private String warden;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "hostelId", referencedColumnName = "id")
 	private Hostel hostel;
-	
-	@OneToMany(mappedBy = "building" )
+
+	@OneToMany(mappedBy = "building", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Floor> floors;
 
@@ -48,8 +47,6 @@ public class Building {
 		this.name = name;
 	}
 
-	
-
 	public int getFloorCount() {
 		return floorCount;
 	}
@@ -73,5 +70,5 @@ public class Building {
 	public void setFloors(List<Floor> floors) {
 		this.floors = floors;
 	}
-	
+
 }
