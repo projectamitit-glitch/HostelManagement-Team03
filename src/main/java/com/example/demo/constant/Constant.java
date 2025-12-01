@@ -12,5 +12,8 @@ public class Constant {
 	public static final String USER_DELETE="USER DELETED SUCCESSFULLY";
 	public static final String ALL_USER_DELETE="ALL USER DELETED SUCCESSFULLY";
 	
+	public static final String BED_DELETED = "BED DELETED SUCCESSFULLY.";
+	public static final String ALL_BEDS_DELETED = "ALL BEDS DELETED SUCCESSFULLY.";
+	
 
 }

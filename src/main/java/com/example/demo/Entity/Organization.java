@@ -17,7 +17,7 @@ public class Organization {
 	private String contactNo;
 	private String email;
 
-	@OneToMany(mappedBy = "organization")
+	@OneToMany(mappedBy = "organization", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Hostel> hostels;
 

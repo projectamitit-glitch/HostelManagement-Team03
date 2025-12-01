@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.example.demo.exception.FloorServiceException;
 import com.example.demo.exception.BedServiceException;
+import com.example.demo.exception.BreakupServiceException;
 import com.example.demo.exception.BuildingServiceException;
 
 import com.example.demo.exception.RoomServiceException;
@@ -38,8 +39,13 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(exception = BedServiceException.class)
 	public ResponseEntity<String> handleBedServiceException(BedServiceException BedServiceException) {
-		return new ResponseEntity<String>(BedServiceException.getMessage(),
-				BedServiceException.getHttpStatus());
+		return new ResponseEntity<String>(BedServiceException.getMessage(), BedServiceException.getHttpStatus());
+	}
+
+	@ExceptionHandler(exception = BreakupServiceException.class)
+	public ResponseEntity<String> handleBreakupServiceException(BreakupServiceException breakupServiceException) {
+		return new ResponseEntity<String>(breakupServiceException.getMessage(),
+				breakupServiceException.getHttpStatus());
 	}
 
 }

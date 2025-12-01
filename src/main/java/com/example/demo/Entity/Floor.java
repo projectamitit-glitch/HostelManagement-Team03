@@ -9,16 +9,16 @@ public class Floor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private int floorNo;
 	private int roomCount;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "buildingId", referencedColumnName = "id")
 	private Building building;
-	
-	@OneToMany(mappedBy = "floor")
+
+	@OneToMany(mappedBy = "floor", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Room> rooms;
 
@@ -38,7 +38,6 @@ public class Floor {
 		this.floorNo = floorNo;
 	}
 
-	
 	public int getRoomCount() {
 		return roomCount;
 	}
@@ -62,8 +61,5 @@ public class Floor {
 	public void setRooms(List<Room> rooms) {
 		this.rooms = rooms;
 	}
-	
-	
-
 
 }

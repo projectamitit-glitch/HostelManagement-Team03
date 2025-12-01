@@ -19,12 +19,12 @@ public class Hostel {
 	private String image;
 	private String website;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "organizationId", referencedColumnName = "id")
 	private Organization organization;
 
-	@OneToMany(mappedBy = "hostel")
+	@OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Building> buildings;
 

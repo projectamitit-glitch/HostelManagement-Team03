@@ -6,21 +6,21 @@ import jakarta.persistence.*;
 
 @Entity
 public class Room {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private int roomNo;
 	private int sharing;
 	private String type;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
+
+	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "floorId", referencedColumnName = "id")
 	private Floor floor;
 
-	@OneToMany(mappedBy = "room")
+	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Bed> beds;
 
@@ -71,7 +71,5 @@ public class Room {
 	public void setBeds(List<Bed> beds) {
 		this.beds = beds;
 	}
-	
-
 
 }

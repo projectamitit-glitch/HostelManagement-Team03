@@ -14,12 +14,12 @@ public class Bed {
 	private String status;
 	private int price;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "roomId", referencedColumnName = "id")
 	private Room room;
 
-	@OneToOne(mappedBy = "bed")
+	@OneToOne(mappedBy = "bed",cascade = CascadeType.ALL)
 	@JsonIgnore
 	private User user;
 

@@ -42,7 +42,7 @@ public class User {
 	    
 	    
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JsonIgnore
 	@JoinColumn(name = "bed_id", referencedColumnName = "id")
 	private Bed bed;
