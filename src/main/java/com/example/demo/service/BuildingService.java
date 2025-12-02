@@ -12,7 +12,7 @@ public interface BuildingService {
 
 	List<BuildingDto> getAllBuildings();
 
-		BuildingDto getBuildingById(Integer id);
+		BuildingDto getBuildingById (Integer id);
 
 	    void deleteBuildingById(Integer id);
 
