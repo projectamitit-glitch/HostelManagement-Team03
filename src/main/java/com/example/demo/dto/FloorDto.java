@@ -2,24 +2,23 @@ package com.example.demo.dto;
 
 public class FloorDto {
 
-	private int floorno;
-	private int noOfRooms;
+	private int floorNo;
+	private int roomCount;
 
-	
-	public int getFloorno() {
-		return floorno;
+	public int getFloorNo() {
+		return floorNo;
 	}
 
-	public void setFloorno(int floorno) {
-		this.floorno = floorno;
+	public void setFloorNo(int floorNo) {
+		this.floorNo = floorNo;
 	}
 
-	public int getNoOfRooms() {
-		return noOfRooms;
+	public int getRoomCount() {
+		return roomCount;
 	}
 
-	public void setNoOfRooms(int noOfRooms) {
-		this.noOfRooms = noOfRooms;
+	public void setRoomCount(int roomCount) {
+		this.roomCount = roomCount;
 	}
 
 }
