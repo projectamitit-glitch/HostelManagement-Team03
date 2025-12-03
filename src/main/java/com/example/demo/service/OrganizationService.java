@@ -9,12 +9,14 @@ public interface OrganizationService {
 
 	void addOrganization(OrganizationDto organizationDto);
 	
-	 Organization getOrganizationById(int id);
+	 OrganizationDto getOrganizationById(int id);
 	
-	 List<Organization> getAllOrganizations();
+	 List<OrganizationDto> getAllOrganizations();
 	 
 	 void deleteOrganizationById(int id);
 	 
 	 void deleteAllOrganizations();
 	
 }
+
+
