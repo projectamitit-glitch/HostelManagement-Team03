@@ -24,6 +24,4 @@ public class BuildingServiceException extends RuntimeException {
 	public void setHttpStatus(HttpStatus httpStatus) {
 		this.httpStatus = httpStatus;
 	}
-	
-	
 }

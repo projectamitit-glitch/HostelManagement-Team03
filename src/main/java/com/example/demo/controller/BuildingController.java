@@ -45,7 +45,6 @@ public class BuildingController {
 	@DeleteMapping("/DeleteAllbuildings")
 	public ResponseEntity deleteAllbuilding() {
 		buildingService.deleteAllBuildings();
-		
 		return new ResponseEntity("All Building Deleted", HttpStatus.OK);
 	}
 

@@ -59,7 +59,7 @@ public class BuildingServiceImpl implements BuildingService {
 		for (Building b : buildings) {
 			BuildingDto dto = new BuildingDto();
 			dto.setName(b.getName());
-			dto.setFloorCount(b.getFloorCount());
+			dto.setNoOfFloors(b.getFloorCount());
 			dto.setWarden(b.getWarden());
 			dtos.add(dto);
 		}
@@ -68,7 +68,7 @@ public class BuildingServiceImpl implements BuildingService {
 	}
 
 	@Override
-	public BuildingDto getBuildingById(int id) {
+	public BuildingDto getBuildingById(Integer id) {
 		Building building = buildingRepository.findById(id).orElse(null);
 
 		if (building == null) {
@@ -77,13 +77,13 @@ public class BuildingServiceImpl implements BuildingService {
 
 		BuildingDto dto = new BuildingDto();
 		dto.setName(building.getName());
-		dto.setFloorCount(building.getFloorCount());
+		dto.setNoOfFloors(building.getFloorCount());
 		dto.setWarden(building.getWarden());
 		return dto;
 	}
 
 	@Override
-	public void deleteBuildingById(int id) {
+	public void deleteBuildingById(Integer id) {
 		Building building = buildingRepository.findById(id).orElse(null);
 
 		if (building == null) {

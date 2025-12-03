@@ -2,7 +2,5 @@
 <workingSetManager>
 <workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1763968174674_0" label="Java Main Sources" name="Java Main Sources"/>
 <workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1763968174743_1" label="Java Test Sources" name="Java Test Sources"/>
-<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1764395418349_3" label="https://github.com/projectamitit-glitch/HostelManagement-Team03.git" name="https://github.com/projectamitit-glitch/HostelManagement-Team03.git"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1763968180551_2" label="Window Working Set" name="Aggregate for window 1763968180551"/>
-<mruList name="https://github.com/projectamitit-glitch/HostelManagement-Team03.git"/>
 </workingSetManager>
