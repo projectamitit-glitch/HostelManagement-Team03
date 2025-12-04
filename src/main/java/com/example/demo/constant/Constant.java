@@ -14,7 +14,6 @@ public class Constant {
 	public static final String ALL_BEDS_DELETED = "ALL BEDS DELETED SUCCESSFULLY.";
 	public static final String ALL_ROOMS_DELETED = "ALL ROOMS DELETED SUCCESSFULLY.";
 	public static final String HOSTEL_DELETED = "HOSTEL DELETED SUCCESSFULLY.";
-	public static final String ALL_BEDS_DELETED = "ALL BEDS DELETED SUCCESSFULLY.";
 
 	public static final String FLOOR_DELETED="FLOOR DELETED SUCCESSFULLY.";
 	public static final String FLOORS_DELETED="FLOORS DELETED SUCCESSFULLY.";
