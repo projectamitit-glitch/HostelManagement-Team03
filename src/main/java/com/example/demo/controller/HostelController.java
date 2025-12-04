@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.constant.Constant;
@@ -53,6 +55,13 @@ public class HostelController {
 		return new ResponseEntity(Constant.ALL_HOSTELS_DELETED,HttpStatus.OK);
 	}
 	
+	@GetMapping("searchHostel")
+	public ResponseEntity searchHostel(@RequestParam(required = false) String city,@RequestParam(required = false) String area) {
+		hostelService.searchHostel(city, area);
+		List<HostelDto> l=hostelService.searchHostel(city, area);
+		return new ResponseEntity(l,HttpStatus.OK);
+		
+	}
 	
 	
 	

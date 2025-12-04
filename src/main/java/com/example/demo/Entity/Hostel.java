@@ -12,7 +12,6 @@ public class Hostel {
 	private int id;
 
 	private String name;
-	private String address;
 	private int capacity;
 	private String contactNo;
 	private String type;
@@ -27,6 +26,19 @@ public class Hostel {
 	@OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Building> buildings;
+	
+	@OneToOne(mappedBy = "hostel")
+	private Address address;
+
+
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public String getImage() {
 		return image;
@@ -66,14 +78,6 @@ public class Hostel {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	public int getCapacity() {
