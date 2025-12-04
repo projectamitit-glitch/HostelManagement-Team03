@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -24,7 +27,7 @@ public class BuildingServiceImpl implements BuildingService {
 	public void saveBuilding(BuildingDto buildingDto, int hostelId) {
 
 		Hostel hostel = hostelRepository.findById(hostelId)
-				.orElseThrow(() -> new BuildingServiceException(ErrorConstant.HOSTEL_NOT_FOUND , HttpStatus.NOT_FOUND));
+				.orElseThrow(() -> new BuildingServiceException(ErrorConstant.HOSTEL_NOT_FOUND, HttpStatus.NOT_FOUND));
 
 		Building building = new Building();
 
@@ -38,10 +41,67 @@ public class BuildingServiceImpl implements BuildingService {
 		}
 
 		catch (BuildingServiceException buildingServiceException) {
-			throw new BuildingServiceException(ErrorConstant.BUILDING_SAVE_EXCEPTION,
-					HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new BuildingServiceException(ErrorConstant.BUILDING_SAVE_EXCEPTION, HttpStatus.INTERNAL_SERVER_ERROR);
 
 		}
 
 	}
+
+	@Override
+	public List<BuildingDto> getAllBuildings() {
+		List<Building> buildings = buildingRepository.findAll();
+
+		if (buildings.isEmpty()) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+		}
+
+		List<BuildingDto> dtos = new java.util.LinkedList<BuildingDto>(); // ArrayList avoid karne ke liye LinkedList
+		for (Building b : buildings) {
+			BuildingDto dto = new BuildingDto();
+			dto.setName(b.getName());
+			dto.setFloorCount(b.getFloorCount());
+			dto.setWarden(b.getWarden());
+			dtos.add(dto);
+		}
+
+		return dtos;
+	}
+
+	@Override
+	public BuildingDto getBuildingById(int id) {
+		Building building = buildingRepository.findById(id).orElse(null);
+
+		if (building == null) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+		}
+
+		BuildingDto dto = new BuildingDto();
+		dto.setName(building.getName());
+		dto.setFloorCount(building.getFloorCount());
+		dto.setWarden(building.getWarden());
+		return dto;
+	}
+
+	@Override
+	public void deleteBuildingById(int id) {
+		Building building = buildingRepository.findById(id).orElse(null);
+
+		if (building == null) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+		}
+
+		buildingRepository.delete(building);
+	}
+
+	@Override
+	public void deleteAllBuildings() {
+		List<Building> buildings = buildingRepository.findAll();
+
+		if (buildings.isEmpty()) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+		}
+
+		buildingRepository.deleteAll();
+	}
+
 }

@@ -37,9 +37,9 @@ public class FloorController {
 List<FloorDto> floorDtos=	floorService.getFloors();
 		return new ResponseEntity<>(floorDtos,HttpStatus.OK);
 	}
-	@DeleteMapping("floor/{floorId}/{buildingId}")
-	public ResponseEntity<String> deleteFloor(@PathVariable int floorId ,@PathVariable int buildingId ) {
-		floorService.deleteFloor(floorId,buildingId);
+	@DeleteMapping("floor/{floorId}")
+	public ResponseEntity<String> deleteFloor(@PathVariable int floorId  ) {
+		floorService.deleteFloor(floorId);
 		 return new ResponseEntity<String>(Constant.FLOOR_DELETED, HttpStatus.OK);
 	}
 	

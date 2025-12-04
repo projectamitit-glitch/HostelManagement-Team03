@@ -11,7 +11,7 @@ public interface FloorService {
 
 	List<FloorDto> getFloors();
 
-	void deleteFloor(int floorId, int buildingId);
-
 	void deleteFloors();
+
+	void deleteFloor(int floorId);
 }

@@ -27,8 +27,11 @@ public class FloorServiceImpl implements FloorService {
 
 	@Override
 	public void saveFloor(FloorDto floorDto, int buildingId) {
-		Building building = buildingRepository.findById(buildingId).orElseThrow(
-				() -> new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND));
+		Optional<Building> optionalBuilding = buildingRepository.findById(buildingId);
+		if (optionalBuilding.isEmpty()) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+		}
+		Building building = optionalBuilding.get();
 		Floor floor = new Floor();
 
 		floor.setFloorNo(floorDto.getFloorNo());
@@ -52,13 +55,10 @@ public class FloorServiceImpl implements FloorService {
 
 			throw new FloorServiceException(ErrorConstant.FLOOR_NOT_FOUND, HttpStatus.NOT_FOUND);
 		}
-
 		Floor floor = optionalfloor.get();
-
 		FloorDto floorDto = new FloorDto();
 		floorDto.setFloorNo(floor.getFloorNo());
 		floorDto.setRoomCount(floor.getRoomCount());
-
 		return floorDto;
 	}
 
@@ -69,7 +69,6 @@ public class FloorServiceImpl implements FloorService {
 		if (floors.isEmpty()) {
 			throw new FloorServiceException(ErrorConstant.FLOOR_NOT_FOUND, HttpStatus.NO_CONTENT);
 		}
-
 		List<FloorDto> floorDtos = new ArrayList();
 		for (Floor floor : floors) {
 			FloorDto floordto = new FloorDto();
@@ -82,12 +81,13 @@ public class FloorServiceImpl implements FloorService {
 	}
 
 	@Override
-	public void deleteFloor(int floorId, int buildingId) {
-		if (!floorRepository.existsById(floorId)) {
+	public void deleteFloor(int floorId) {
+		Optional<Floor> optionalFloor = floorRepository.findById(floorId);
+		if (optionalFloor.isEmpty()) {
 			throw new FloorServiceException(ErrorConstant.FLOOR_NOT_FOUND, HttpStatus.NOT_FOUND);
 		}
-
-		Building building = buildingRepository.findById(buildingId).get();
+		Floor floor = optionalFloor.get();
+		Building building = floor.getBuilding();
 		if (building == null) {
 			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
 		}
