@@ -101,7 +101,7 @@ public class BuildingServiceImpl implements BuildingService {
 			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
 		}
 
-		buildingRepository.deleteAll();
+		buildingRepository.deleteAll(buildings);
 	}
 
 }
