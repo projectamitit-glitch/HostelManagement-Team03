@@ -32,22 +32,22 @@ public class BuildingController {
 
 	}
 
-	@GetMapping("/getAllbuildings")
+	@GetMapping("/buildings")
 	public ResponseEntity getAllbuildings() {
 		return new ResponseEntity(buildingService.getAllBuildings(), HttpStatus.OK);
 	}
 
-	@DeleteMapping("/deletebuilding/{id}")
+	@DeleteMapping("/building/{id}")
 	public ResponseEntity deletebuildingById(@PathVariable int id) {
 		buildingService.deleteBuildingById(id);
 		return new ResponseEntity(Constant.BUILDING_DELETED, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/DeleteAllbuildings")
+	@DeleteMapping("/buildings")
 	public ResponseEntity deleteAllbuilding() {
 		buildingService.deleteAllBuildings();
 
-		return new ResponseEntity(Constant.BUILDING_DELETED, HttpStatus.OK);
+		return new ResponseEntity(Constant.All_BUILDING_DELETED, HttpStatus.OK);
 	}
 
 }
