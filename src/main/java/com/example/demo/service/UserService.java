@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.demo.dto.UserDto;
 
 public interface UserService {
-	public UserDto saveUser(UserDto userDto);
+	public void saveUser(UserDto userDto);
 
 	public List<UserDto> getAllUsers();
 

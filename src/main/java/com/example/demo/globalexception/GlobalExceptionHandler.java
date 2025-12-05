@@ -47,5 +47,6 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<String>(breakupServiceException.getMessage(),
 				breakupServiceException.getHttpStatus());
 	}
+	
 
 }

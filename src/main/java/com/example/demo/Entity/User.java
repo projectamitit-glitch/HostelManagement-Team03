@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Users")
 public class User {
 
 	@Id
@@ -29,18 +28,13 @@ public class User {
 	private String idProofNumber;
 	private String guardianName;
 	private String guardianContact;
-	
-	
-	
-	 @CreationTimestamp
-	    @Column(updatable = false)
-	    private LocalDateTime createdDate;
 
-	    @UpdateTimestamp
-	    private LocalDateTime updatedDate;
-	    
-	    
-	    
+	@CreationTimestamp
+	@Column(updatable = false)
+	private LocalDateTime createdDate;
+
+	@UpdateTimestamp
+	private LocalDateTime updatedDate;
 
 	@OneToOne
 	@JsonIgnore
@@ -182,6 +176,5 @@ public class User {
 	public void setUpdatedDate(LocalDateTime updatedDate) {
 		this.updatedDate = updatedDate;
 	}
-	
 
 }

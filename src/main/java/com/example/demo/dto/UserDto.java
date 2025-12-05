@@ -16,7 +16,7 @@ public class UserDto {
 	private String idProofNumber;
 	private String guardianName;
 	private String guardianContact;
-	private Integer bedId;
+	
 	
 	
 	public String getName() {
@@ -97,13 +97,7 @@ public class UserDto {
 	public void setGuardianContact(String guardianContact) {
 		this.guardianContact = guardianContact;
 	}
-	public Integer getBedId() {
-		return bedId;
-	}
-	public void setBedId(Integer bedId) {
-		this.bedId = bedId;
-		
-	}
+	
 	
 	
 	

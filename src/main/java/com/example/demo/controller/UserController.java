@@ -18,9 +18,9 @@ import com.example.demo.dto.UserDto;
 import com.example.demo.service.UserService;
 
 @RestController
-@RequestMapping("/User")
+@RequestMapping("/user")
 public class UserController {
- 
+
 	@Autowired
 	UserService userService;
 
@@ -34,24 +34,24 @@ public class UserController {
 	@GetMapping("/{id}")
 	public ResponseEntity<UserDto> getUserById(@PathVariable int id) {
 		UserDto user = userService.getUserById(id);
-		return new ResponseEntity<>(user,HttpStatus.OK);
+		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
 	@GetMapping("/all")
 	public ResponseEntity<List<UserDto>> getAllUsers() {
 		List<UserDto> users = userService.getAllUsers();
-		return new ResponseEntity<>(users,HttpStatus.OK);
+		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteUser(@PathVariable int id) {
 		userService.deleteUser(id);
-		return new ResponseEntity<>(Constant.USER_DELETE,HttpStatus.OK);
+		return new ResponseEntity<>(Constant.USER_DELETE, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/deleteAll")
 	public ResponseEntity<String> deleteAllUsers() {
 		userService.deleteAllUsers();
-		return new ResponseEntity<>(Constant.ALL_USER_DELETE,HttpStatus.OK);
+		return new ResponseEntity<>(Constant.ALL_USER_DELETE, HttpStatus.OK);
 	}
 }
