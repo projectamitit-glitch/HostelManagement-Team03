@@ -42,7 +42,7 @@ public class FloorServiceImpl implements FloorService {
 			 floorRepository.save(floor);
 			building.setFloorCount(building.getFloorCount() + 1);
 			buildingRepository.save(building);
-		} catch (FloorServiceException floorServiceException) {
+		} catch (Exception exception) {
 			throw new FloorServiceException(ErrorConstant.FLOOR_SAVE_EXCEPTION, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -94,7 +94,12 @@ public class FloorServiceImpl implements FloorService {
 		floorRepository.deleteById(floorId);
 
 		building.setFloorCount(building.getFloorCount() - 1);
-		buildingRepository.save(building);
+		try {
+			buildingRepository.save(building);
+		} catch (Exception e) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+		}
+		
 	}
 
 	@Override
@@ -108,7 +113,12 @@ public class FloorServiceImpl implements FloorService {
 
 		for (Building building : buildings) {
 			building.setFloorCount(0);
-			buildingRepository.save(building);
+			try {
+				buildingRepository.save(building);
+			} catch (Exception e) {
+				throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+			}
+			
 		}
 
 	}
