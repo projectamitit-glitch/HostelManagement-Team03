@@ -9,6 +9,9 @@ public class Constant {
 	public static final String ROOM_SAVED="ROOM SAVED SUCCESSFULLY.";
 	public static final String BED_SAVED="BED SAVED SUCCESSFULLY.";
 	
+	
+	
+	
 	public static final String BED_DELETED = "BED DELETED SUCCESSFULLY.";
 	public static final String ROOM_DELETED = "ROOM DELETED SUCCESSFULLY.";
 	public static final String ALL_BEDS_DELETED = "ALL BEDS DELETED SUCCESSFULLY.";

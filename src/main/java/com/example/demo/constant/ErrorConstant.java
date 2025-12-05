@@ -4,6 +4,13 @@ public class ErrorConstant {
 
 	public static final String ID_NOT_FOUND_EXCEPTION = "ID NOT FOUND.";
 	public static final String ERROR_OCCURED_EXCEPTION = "ERROR OCCURED WHILE SAVING.";
+	
+	public static final String ORGANIZATION_NOT_FOUND = "ORGANIZATION NOT FOUND.";
+    public static final String ORGANIZATION_NOT_FOUND_ID = "ORGANIZATION NOT FOUND WITH ID: ";
+    public static final String ORGANIZATION_SAVE_EXCEPTION = "ERROR OCCURRED WHILE SAVING THE ORGANIZATION."; 
+    public static final String ORGANIZATION_LIST_EMPTY = "NO ORGANIZATIONS AVAILABLE.";
+    public static final String ORGANIZATION_DELETE_ALL_EXCEPTION = "ERROR OCCURRED WHILE DELETING ALL ORGANIZATIONS.";
+	public static final String ORAGANIZATION_DELETE_EXCEPTION = "ERROR OCCURRED WHILE DELETING THE BED.";
 
 	public static final String BUILDING_NOT_FOUND = "BUILDING NOT FOUND.";
 	public static final String HOSTEL_NOT_FOUND = "HOSTEL NOT FOUND.";
@@ -25,10 +32,6 @@ public class ErrorConstant {
 	public static final String FLOOR_LIST_EMPTY=" NO FLOOR AVAILABLE.";
 
 	public static final String ROOMS_NOT_FOUND="ROOMS NOT AVAILABLE.";
-
-
-
-
 
 
 }
