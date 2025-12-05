@@ -22,9 +22,9 @@ public class FloorController {
 	@Autowired
 	FloorService floorService;
 
-	@PostMapping("floor/{buildingID}")
-	ResponseEntity<String> addFloor(@RequestBody FloorDto floordto, @PathVariable int buildingID) {
-		floorService.saveFloor(floordto, buildingID);
+	@PostMapping("floor/{buildingId}")
+	ResponseEntity<String> addFloor(@RequestBody FloorDto floordto, @PathVariable int buildingId) {
+		floorService.saveFloor(floordto, buildingId);
 		return new ResponseEntity<String>(Constant.FLOOR_SAVED, HttpStatus.CREATED);
 	}
 	@GetMapping("floor/{floorId}")

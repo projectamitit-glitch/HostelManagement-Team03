@@ -39,7 +39,7 @@ public class FloorServiceImpl implements FloorService {
 		floor.setBuilding(building);
 
 		try {
-			Floor floor2 = floorRepository.save(floor);
+			 floorRepository.save(floor);
 			building.setFloorCount(building.getFloorCount() + 1);
 			buildingRepository.save(building);
 		} catch (FloorServiceException floorServiceException) {
