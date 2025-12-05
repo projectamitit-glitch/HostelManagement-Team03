@@ -27,10 +27,9 @@ public class BuildingServiceImpl implements BuildingService {
 	public void saveBuilding(BuildingDto buildingDto, int hostelId) {
 
 		Hostel hostel = hostelRepository.findById(hostelId).get();
-				if(hostel==null) {
-					throw new BuildingServiceException("Hostel not found", HttpStatus.NOT_FOUND);
-				}
-				
+		if (hostel == null) {
+			throw new BuildingServiceException("Hostel not found", HttpStatus.NOT_FOUND);
+		}
 
 		Building building = new Building();
 
@@ -39,13 +38,10 @@ public class BuildingServiceImpl implements BuildingService {
 		building.setWarden(buildingDto.getWarden());
 
 		building.setHostel(hostel);
-			Building building2=	buildingRepository.save(building);
-			if(building2==null) {
-				throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
-			}
-		
-
-		
+		Building building2 = buildingRepository.save(building);
+		if (building2 == null) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+		}
 
 	}
 
@@ -57,9 +53,9 @@ public class BuildingServiceImpl implements BuildingService {
 			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
 		}
 
-		List<BuildingDto> dtos = new ArrayList(); 
-		
-		for(Building b : buildings) {
+		List<BuildingDto> dtos = new ArrayList();
+
+		for (Building b : buildings) {
 			BuildingDto dto = new BuildingDto();
 			dto.setName(b.getName());
 			dto.setFloorCount(b.getFloorCount());
@@ -86,17 +82,6 @@ public class BuildingServiceImpl implements BuildingService {
 	}
 
 	@Override
-	public void deleteBuildingById(int id) {
-		Building building = buildingRepository.findById(id).get();
-
-		if (building == null) {
-			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
-		}
-
-		buildingRepository.delete(building);
-	}
-
-	@Override
 	public void deleteAllBuildings() {
 		List<Building> buildings = buildingRepository.findAll();
 
@@ -105,6 +90,19 @@ public class BuildingServiceImpl implements BuildingService {
 		}
 
 		buildingRepository.deleteAll(buildings);
+	}
+
+	@Override
+	public void deleteBuildingById(int id) {
+
+		Building building = buildingRepository.findById(id).get();
+
+		if (building == null) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+		}
+
+		buildingRepository.delete(building);
+
 	}
 
 }

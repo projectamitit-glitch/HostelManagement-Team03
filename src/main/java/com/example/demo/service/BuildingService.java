@@ -11,6 +11,7 @@ public interface BuildingService {
 	BuildingDto getBuildingById(int id);
 
 	List<BuildingDto> getAllBuildings();
+		BuildingDto getBuildingById (Integer id);
 
 	void deleteBuildingById(int id);
 
