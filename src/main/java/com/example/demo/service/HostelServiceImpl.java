@@ -40,7 +40,6 @@ public class HostelServiceImpl implements HostelService {
 		}
 
 		Hostel hostel = new Hostel();
-		Address address=new Address();
 
 		hostel.setOrganization(organization);
 		hostel.setName(hostelDto.getName());
@@ -50,21 +49,26 @@ public class HostelServiceImpl implements HostelService {
 		hostel.setWebsite(hostelDto.getWebsite());
 		hostel.setType(hostelDto.getType());
 
+		Address address=hostelDto.getAddress();
+		if(address==null) {
+			throw new AddressServiceExcpetion(ErrorConstant.ADDRESS_NOT_ADDED_EXCEPTION, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 		hostel.setAddress(hostelDto.getAddress());
 		hostelDto.getAddress().setHostel(hostel);
-		
-		
-		Address address1=hostelDto.getAddress();
-		addressRepository.save(address);
-		if(address1==null) {
-		 throw new AddressServiceExcpetion(ErrorConstant.ADDRESS_NOT_ADDED_EXCEPTION, HttpStatus.INTERNAL_SERVER_ERROR);
+	
+		try {
+			addressRepository.save(address);
+		}	
+		catch(Exception e){
+		 throw new AddressServiceExcpetion(ErrorConstant.ADDRESS_SAVE_EXCEPTION, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		
-		Hostel hostel1=hostelRepository.save(hostel);
-		if(hostel1==null) {
+		try {
+			hostelRepository.save(hostel);
+		} catch (Exception e) {
 			throw new HostelServiceException(ErrorConstant.HOSTEL_SAVE_EXCEPTION, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
 
 	}
 

@@ -18,6 +18,8 @@ public class ErrorConstant {
 	public static final String BUILDING_SAVE_EXCEPTION = "ERROR OCCURED WHILE SAVING THE BUILDING.";
 	public static final String BED_SAVE_EXCEPTION = "ERROR OCCURED WHILE SAVING THE BED.";
 	public static final String HOSTEL_SAVE_EXCEPTION = "ERROR OCCURED WHILE SAVING THE HOSTEL.";
+	public static final String ADDRESS_SAVE_EXCEPTION = "ERROR OCCURED WHILE SAVING THE ADDRESS OF HOSTEL.";
+
 	
 	
 	public static final String BED_LIST_EMPTY = "NO BEDS AVAILABLE.";

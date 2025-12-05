@@ -57,7 +57,6 @@ public class HostelController {
 	
 	@GetMapping("searchHostel")
 	public ResponseEntity searchHostel(@RequestParam(required = false) String city,@RequestParam(required = false) String area) {
-		hostelService.searchHostel(city, area);
 		List<HostelDto> l=hostelService.searchHostel(city, area);
 		return new ResponseEntity(l,HttpStatus.OK);
 		
