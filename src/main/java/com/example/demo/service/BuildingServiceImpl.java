@@ -104,4 +104,10 @@ public class BuildingServiceImpl implements BuildingService {
 		buildingRepository.deleteAll();
 	}
 
+	@Override
+	public BuildingDto getBuildingById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
