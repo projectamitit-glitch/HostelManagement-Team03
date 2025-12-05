@@ -19,15 +19,20 @@ public class ErrorConstant {
 	public static final String BED_SAVE_EXCEPTION = "ERROR OCCURED WHILE SAVING THE BED.";
 	public static final String HOSTEL_SAVE_EXCEPTION = "ERROR OCCURED WHILE SAVING THE HOSTEL.";
 	
+	public static final String ROOM_SAVE_EXCEPTION = "ERROR OCCURED WHILE SAVING THE ROOM.";
 	
 	public static final String BED_LIST_EMPTY = "NO BEDS AVAILABLE.";
 	public static final String HOSTEL_LIST_EMPTY = "NO HOSTELS AVAILABLE.";
 	public static final String BED_DELETE_ALL_EXCEPTION = "ERROR OCCURRED WHILE DELETING ALL BEDS.";
 	public static final String HOSTEL_DELETE_ALL_EXCEPTION = "ERROR OCCURRED WHILE DELETING ALL HOSTELS.";
 	public static final String BED_DELETE_EXCEPTION = "ERROR OCCURRED WHILE DELETING THE BED.";
+	public static final String ROOMS_NOT_FOUND="ROOMS NOT AVAILABLE.";
+	
 
 
 
 
 
 }
+
+
