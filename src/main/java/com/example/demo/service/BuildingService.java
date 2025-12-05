@@ -8,10 +8,9 @@ public interface BuildingService {
 
 	public void saveBuilding(BuildingDto buildingDto, int hostelId);
 
-	BuildingDto getBuildingById(int id);
-
 	List<BuildingDto> getAllBuildings();
-		BuildingDto getBuildingById (Integer id);
+
+	BuildingDto getBuildingById(int id);
 
 	void deleteBuildingById(int id);
 
