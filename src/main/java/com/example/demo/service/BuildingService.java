@@ -4,18 +4,16 @@ import java.util.List;
 
 import com.example.demo.dto.BuildingDto;
 
-
 public interface BuildingService {
 
 	public void saveBuilding(BuildingDto buildingDto, int hostelId);
 
-	  BuildingDto getBuildingById(int id);
+	List<BuildingDto> getAllBuildings();
 
-	    List<BuildingDto> getAllBuildings();
-		BuildingDto getBuildingById (Integer id);
+	BuildingDto getBuildingById(int id);
 
-	    void deleteBuildingById(int id);
+	void deleteBuildingById(int id);
 
-	    void deleteAllBuildings();
+	void deleteAllBuildings();
 
 }

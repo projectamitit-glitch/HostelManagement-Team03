@@ -26,27 +26,29 @@ public class BuildingController {
 		return new ResponseEntity(Constant.BUILDING_SAVED, HttpStatus.CREATED);
 	}
 
-	@GetMapping("/buildings/{id}")
+	@GetMapping("/building/{id}")
 	public ResponseEntity<BuildingDto> getbuildingbyId(@PathVariable int id) {
 		return new ResponseEntity(buildingService.getBuildingById(id), HttpStatus.OK);
+
 	}
 
-	@GetMapping("/getAllbuildings")
+	@GetMapping("/buildings")
 	public ResponseEntity getAllbuildings() {
 		return new ResponseEntity(buildingService.getAllBuildings(), HttpStatus.OK);
 	}
 
-	@DeleteMapping("/deletebuilding/{id}")
+	@DeleteMapping("/building/{id}")
 	public ResponseEntity deletebuildingById(@PathVariable int id) {
 		buildingService.deleteBuildingById(id);
-		return new ResponseEntity("Building Deleted with ID: " + id, HttpStatus.OK);
+		return new ResponseEntity(Constant.BUILDING_DELETED, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/DeleteAllbuildings")
+	@DeleteMapping("/buildings")
 	public ResponseEntity deleteAllbuilding() {
 		buildingService.deleteAllBuildings();
-		
-		return new ResponseEntity("All Building Deleted", HttpStatus.OK);
+
+		return new ResponseEntity(Constant.All_BUILDING_DELETED, HttpStatus.OK);
 	}
 
 }
+

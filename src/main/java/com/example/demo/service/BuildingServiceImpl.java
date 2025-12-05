@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,8 +26,10 @@ public class BuildingServiceImpl implements BuildingService {
 	@Override
 	public void saveBuilding(BuildingDto buildingDto, int hostelId) {
 
-		Hostel hostel = hostelRepository.findById(hostelId)
-				.orElseThrow(() -> new BuildingServiceException(ErrorConstant.HOSTEL_NOT_FOUND, HttpStatus.NOT_FOUND));
+		Hostel hostel = hostelRepository.findById(hostelId).get();
+		if (hostel == null) {
+			throw new BuildingServiceException("Hostel not found", HttpStatus.NOT_FOUND);
+		}
 
 		Building building = new Building();
 
@@ -36,13 +38,9 @@ public class BuildingServiceImpl implements BuildingService {
 		building.setWarden(buildingDto.getWarden());
 
 		building.setHostel(hostel);
-		try {
-			buildingRepository.save(building);
-		}
-
-		catch (BuildingServiceException buildingServiceException) {
-			throw new BuildingServiceException(ErrorConstant.BUILDING_SAVE_EXCEPTION, HttpStatus.INTERNAL_SERVER_ERROR);
-
+		Building building2 = buildingRepository.save(building);
+		if (building2 == null) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
 		}
 
 	}
@@ -55,7 +53,8 @@ public class BuildingServiceImpl implements BuildingService {
 			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
 		}
 
-		List<BuildingDto> dtos = new java.util.LinkedList<BuildingDto>(); // ArrayList avoid karne ke liye LinkedList
+		List<BuildingDto> dtos = new ArrayList();
+
 		for (Building b : buildings) {
 			BuildingDto dto = new BuildingDto();
 			dto.setName(b.getName());
@@ -69,7 +68,7 @@ public class BuildingServiceImpl implements BuildingService {
 
 	@Override
 	public BuildingDto getBuildingById(int id) {
-		Building building = buildingRepository.findById(id).orElse(null);
+		Building building = buildingRepository.findById(id).get();
 
 		if (building == null) {
 			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
@@ -83,17 +82,6 @@ public class BuildingServiceImpl implements BuildingService {
 	}
 
 	@Override
-	public void deleteBuildingById(int id) {
-		Building building = buildingRepository.findById(id).orElse(null);
-
-		if (building == null) {
-			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
-		}
-
-		buildingRepository.delete(building);
-	}
-
-	@Override
 	public void deleteAllBuildings() {
 		List<Building> buildings = buildingRepository.findAll();
 
@@ -101,7 +89,20 @@ public class BuildingServiceImpl implements BuildingService {
 			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
 		}
 
-		buildingRepository.deleteAll();
+		buildingRepository.deleteAll(buildings);
+	}
+
+	@Override
+	public void deleteBuildingById(int id) {
+
+		Building building = buildingRepository.findById(id).get();
+
+		if (building == null) {
+			throw new BuildingServiceException(ErrorConstant.BUILDING_NOT_FOUND, HttpStatus.NOT_FOUND);
+		}
+
+		buildingRepository.delete(building);
+
 	}
 
 	@Override
