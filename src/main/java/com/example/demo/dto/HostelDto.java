@@ -1,28 +1,30 @@
 package com.example.demo.dto;
 
+import com.example.demo.Entity.Address;
+
 public class HostelDto {
 	
 	private String name;
-	private String address;
 	private int capacity;
 	private String contactNo;
 	private String type;
 	private String image;
 	private String website;
+	private Address address;
 	
-	
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	
 	public int getCapacity() {
 		return capacity;
 	}

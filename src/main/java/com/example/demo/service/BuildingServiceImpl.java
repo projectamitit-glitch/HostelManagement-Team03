@@ -105,4 +105,12 @@ public class BuildingServiceImpl implements BuildingService {
 
 	}
 
+	@Override
+	public BuildingDto getBuildingById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }

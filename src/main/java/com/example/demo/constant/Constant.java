@@ -20,4 +20,11 @@ public class Constant {
 	public static final String BUILDING_DELETED = "Building Deleted Successfully.";
 	public static final String All_BUILDING_DELETED = "All Building Deleted Successfully.";
 
+	public static final String FLOOR_DELETED="FLOOR DELETED SUCCESSFULLY.";
+	public static final String FLOORS_DELETED="FLOORS DELETED SUCCESSFULLY.";
+
+	public static final String ALL_HOSTELS_DELETED = "ALL HOSTELS DELETED SUCCESSFULLY.";
+	
+	
+
 }
