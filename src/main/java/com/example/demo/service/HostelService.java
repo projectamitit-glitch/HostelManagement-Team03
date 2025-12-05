@@ -14,5 +14,7 @@ public interface HostelService {
 	public HostelDto getHostel(int id);
 	
 	public List<HostelDto> getAllHostels();
+	
+	public List<HostelDto> searchHostel(String city, String area);
 
 }

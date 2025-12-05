@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.example.demo.exception.FloorServiceException;
 import com.example.demo.exception.HostelServiceException;
+import com.example.demo.exception.OrganizationServiceException;
+import com.example.demo.exception.AddressServiceExcpetion;
 import com.example.demo.exception.BedServiceException;
 import com.example.demo.exception.BreakupServiceException;
 import com.example.demo.exception.BuildingServiceException;
@@ -54,5 +56,14 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<String> handleHostelServiceException(HostelServiceException hostelServiceException) {
 		return new ResponseEntity<String>(hostelServiceException.getMessage(),hostelServiceException.getHttpStatus());
 	}
+	
+	@ExceptionHandler(exception = AddressServiceExcpetion.class)
+	public ResponseEntity<String> addressHostelServiceException(HostelServiceException hostelServiceException) {
+		return new ResponseEntity<String>(hostelServiceException.getMessage(),hostelServiceException.getHttpStatus());
+	}
 
+	@ExceptionHandler(exception = OrganizationServiceException.class)
+	public ResponseEntity<String> organizationHostelServiceException(HostelServiceException hostelServiceException) {
+		return new ResponseEntity<String>(hostelServiceException.getMessage(),hostelServiceException.getHttpStatus());
+	}
 }
