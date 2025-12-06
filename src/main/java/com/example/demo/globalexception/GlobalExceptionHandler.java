@@ -23,6 +23,13 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<String>(exception.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
+	@ExceptionHandler(exception = OrganizationServiceException.class)
+	public ResponseEntity<String> handleOrganizationServiceException(
+			OrganizationServiceException OrganizationServiceException) {
+		return new ResponseEntity<String>(OrganizationServiceException.getMessage(),
+				OrganizationServiceException.getHttpStatus());
+	}
+
 	@ExceptionHandler(exception = BuildingServiceException.class)
 	public ResponseEntity<String> handleBuildingServiceException(
 			BuildingServiceException handleBuildingServiceException) {
@@ -51,11 +58,10 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<String>(breakupServiceException.getMessage(),
 				breakupServiceException.getHttpStatus());
 	}
-	
-	
+
 	@ExceptionHandler(exception = HostelServiceException.class)
 	public ResponseEntity<String> handleHostelServiceException(HostelServiceException hostelServiceException) {
-		return new ResponseEntity<String>(hostelServiceException.getMessage(),hostelServiceException.getHttpStatus());
+		return new ResponseEntity<String>(hostelServiceException.getMessage(), hostelServiceException.getHttpStatus());
 	}
 	
 	@ExceptionHandler(exception = AddressServiceExcpetion.class)
