@@ -2,8 +2,6 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.demo.Entity.Organization;
-import com.example.demo.dto.BedDto;
 import com.example.demo.dto.OrganizationDto;
 
 public interface OrganizationService {

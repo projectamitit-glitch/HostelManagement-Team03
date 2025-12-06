@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.example.demo.exception.FloorServiceException;
 import com.example.demo.exception.HostelServiceException;
-import com.example.demo.exception.OraganizationServiceException;
+import com.example.demo.exception.OrganizationServiceException;
 import com.example.demo.exception.BedServiceException;
 import com.example.demo.exception.BreakupServiceException;
 import com.example.demo.exception.BuildingServiceException;
@@ -21,11 +21,11 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<String>(exception.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
-	@ExceptionHandler(exception = OraganizationServiceException.class)
-	public ResponseEntity<String> handleOraganizationServiceException(
-			OraganizationServiceException OraganizationServiceException) {
-		return new ResponseEntity<String>(OraganizationServiceException.getMessage(),
-				OraganizationServiceException.getHttpStatus());
+	@ExceptionHandler(exception = OrganizationServiceException.class)
+	public ResponseEntity<String> handleOrganizationServiceException(
+			OrganizationServiceException OrganizationServiceException) {
+		return new ResponseEntity<String>(OrganizationServiceException.getMessage(),
+				OrganizationServiceException.getHttpStatus());
 	}
 
 	@ExceptionHandler(exception = BuildingServiceException.class)
