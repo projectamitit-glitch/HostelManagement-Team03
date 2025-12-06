@@ -22,7 +22,10 @@ public class Bed {
 	@JoinColumn(name = "roomId", referencedColumnName = "id")
 	private Room room;
 
-	@OneToOne(mappedBy = "bed", cascade = CascadeType.ALL)
+	
+
+	
+	@OneToOne(mappedBy = "bed")
 	@JsonIgnore
 	private User user;
 
