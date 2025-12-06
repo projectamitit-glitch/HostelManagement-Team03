@@ -13,6 +13,7 @@ import com.example.demo.exception.BreakupServiceException;
 import com.example.demo.exception.BuildingServiceException;
 
 import com.example.demo.exception.RoomServiceException;
+import com.example.demo.exception.UserServiceException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -66,4 +67,10 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<String> organizationHostelServiceException(HostelServiceException hostelServiceException) {
 		return new ResponseEntity<String>(hostelServiceException.getMessage(),hostelServiceException.getHttpStatus());
 	}
+
+         @ExceptionHandler(exception = UserServiceException.class)
+       public ResponseEntity<String> handleUserServiceException(UserServiceException UserServiceException) {
+	       return new ResponseEntity<String>(UserServiceException.getMessage(), UserServiceException.getHttpStatus());
+
+      }
 }
