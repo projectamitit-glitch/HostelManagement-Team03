@@ -66,20 +66,20 @@ public class OrganizationServiceImpl implements OrganizationService {
 
 	@Override
 	public OrganizationDto getOrganizationById(int id) {
-		Optional<Organization> optionalOraganization = organizationRepository.findById(id);
+		Optional<Organization> optionalOrganization = organizationRepository.findById(id);
 
-		if (optionalOraganization.isEmpty()) {
+		if (optionalOrganization.isEmpty()) {
 			throw new OrganizationServiceException(ErrorConstant.ORGANIZATION_NOT_FOUND_ID, HttpStatus.NOT_FOUND);
 		}
-		Organization organization = optionalOraganization.get();
-		OrganizationDto oraganizationDto = new OrganizationDto();
-		oraganizationDto.setName(organization.getName());
-		oraganizationDto.setOwnerName(organization.getOwnerName());
-		oraganizationDto.setEmail(organization.getEmail());
-		oraganizationDto.setContactNo(organization.getContactNo());
-		oraganizationDto.setAddress(organization.getAddress());
+		Organization organization = optionalOrganization.get();
+		OrganizationDto organizationDto = new OrganizationDto();
+		organizationDto.setName(organization.getName());
+		organizationDto.setOwnerName(organization.getOwnerName());
+		organizationDto.setEmail(organization.getEmail());
+		organizationDto.setContactNo(organization.getContactNo());
+		organizationDto.setAddress(organization.getAddress());
 
-		return oraganizationDto;
+		return organizationDto;
 	}
 
 	@Override
@@ -104,7 +104,7 @@ public class OrganizationServiceImpl implements OrganizationService {
 		try {
 			organizationRepository.deleteById(id);
 		} catch (Exception e) {
-			throw new OrganizationServiceException(ErrorConstant.ORAGANIZATION_DELETE_EXCEPTION,
+			throw new OrganizationServiceException(ErrorConstant.ORGANIZATION_DELETE_EXCEPTION,
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
