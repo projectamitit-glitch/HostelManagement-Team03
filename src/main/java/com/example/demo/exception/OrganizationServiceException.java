@@ -17,6 +17,18 @@ public class OrganizationServiceException extends RuntimeException {
 		return errorMassage;
 	}
 
+	private String errorMessage;
+	private HttpStatus httpStatus;
+	
+	
+	
+	@Override
+	public String getMessage() {
+		return errorMessage;
+	}
+
+
+
 	public HttpStatus getHttpStatus() {
 		return httpStatus;
 	}
@@ -25,4 +37,20 @@ public class OrganizationServiceException extends RuntimeException {
 		this.httpStatus = httpStatus;
 	}
 
+
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+
+
+	public OrganizationServiceException(String errorMessage, HttpStatus httpStatus) {
+		
+		this.errorMessage = errorMessage;
+		this.httpStatus = httpStatus;
+	}
+	
+	
+	
 }
