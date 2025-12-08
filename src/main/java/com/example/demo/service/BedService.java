@@ -6,7 +6,7 @@ import com.example.demo.dto.BedDto;
 
 public interface BedService {
 
-	void addBed(BedDto bedDto);
+	void addBed(int roomId, BedDto bedDto);
 
 	List<BedDto> getAllBeds();
 
@@ -15,4 +15,6 @@ public interface BedService {
 	void deleteAllBeds();
 
 	void deleteBedById(int id);
+
+	List<BedDto> getAvailableBedsByRoomSharing(int hostelId, int sharing);
 }

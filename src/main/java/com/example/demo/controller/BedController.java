@@ -22,8 +22,8 @@ public class BedController {
 	BedService bedService;
 
 	@PostMapping("bed/{roomId}")
-	public ResponseEntity<String> addBed(@RequestBody BedDto bedDto) {
-		bedService.addBed(bedDto);
+	public ResponseEntity<String> addBed(@PathVariable int roomId, @RequestBody BedDto bedDto) {
+		bedService.addBed(roomId, bedDto);
 		return new ResponseEntity<>(Constant.BED_SAVED, HttpStatus.CREATED);
 	}
 
@@ -47,6 +47,11 @@ public class BedController {
 	public ResponseEntity<String> deleteBedById(@PathVariable int id) {
 		bedService.deleteBedById(id);
 		return new ResponseEntity<>(Constant.BED_DELETED, HttpStatus.OK);
+	}
+
+	@GetMapping("getAvailableBedsByRoomSharing/{hostelId}/{sharing}")
+	List<BedDto> getAvailableBedsByRoomSharing(@PathVariable int hostelId, @PathVariable int sharing) {
+		return bedService.getAvailableBedsByRoomSharing(hostelId, sharing);
 	}
 
 }
