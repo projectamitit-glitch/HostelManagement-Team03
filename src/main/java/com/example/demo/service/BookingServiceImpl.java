@@ -1,14 +1,18 @@
 package com.example.demo.service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Entity.Bed;
 import com.example.demo.Entity.Booking;
 import com.example.demo.Entity.Payment;
 import com.example.demo.Entity.User;
+import com.example.demo.constant.ErrorConstant;
+import com.example.demo.exception.BookingServiceException;
 import com.example.demo.repository.BedRepository;
 import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.PaymentRepository;
@@ -32,15 +36,19 @@ public class BookingServiceImpl implements BookingService{
 	    public void createBooking(int userId, int bedId, int finalAmount) {
 
 	    
-	        User user = userRepository.findById(userId).get();
-	        if (user == null) {
-	            throw new RuntimeException("USER NOT FOUND");
-	        }
-	        
-	        Bed bed = bedRepository.findById(bedId).get();
-	        if (bed == null) {
-	            throw new RuntimeException("BED NOT FOUND");
-	        }
+	    	Optional<User> optionalUser = userRepository.findById(userId);
+	    	if (optionalUser.isEmpty()) {
+	    	    throw new BookingServiceException(ErrorConstant.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
+	    	}
+	    	User user = optionalUser.get();
+
+
+	    	Optional<Bed> optionalBed = bedRepository.findById(bedId);
+	    	if (optionalBed.isEmpty()) {
+	    	    throw new BookingServiceException(ErrorConstant.BED_NOT_FOUND, HttpStatus.NOT_FOUND);
+	    	}
+	    	Bed bed = optionalBed.get();
+
 
 	        Booking booking = new Booking();
 	        booking.setUserId(userId);
