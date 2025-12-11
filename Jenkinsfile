@@ -128,6 +128,8 @@ pipeline {
                               --name ${CONTAINER_NAME} \
                               --network jenkins-net \
                               -p ${HOST_PORT}:${APP_PORT} \
+                              -v /logs/log_team3/dev:/logs/log_team3/dev \
+                              -v /logs/log_team3/prod:/logs/log_team3/prod \
                               -e SPRING_PROFILES_ACTIVE=${params.ENVIRONMENT} \
                               -e SPRING_DATASOURCE_URL=${DB_URL} \
                               -e SPRING_DATASOURCE_USERNAME=$DB_USER \
