@@ -2,7 +2,7 @@ package com.example.demo.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class AddressServiceExcpetion extends RuntimeException {
+public class AddressServiceException extends RuntimeException {
 	private String errorMessage;
 	private HttpStatus httpStatus;
 
@@ -15,7 +15,7 @@ public class AddressServiceExcpetion extends RuntimeException {
 		return httpStatus;
 	}
 
-	public AddressServiceExcpetion(String errorMessage, HttpStatus httpStatus) {
+	public AddressServiceException(String errorMessage, HttpStatus httpStatus) {
 		super();
 		this.errorMessage = errorMessage;
 		this.httpStatus = httpStatus;

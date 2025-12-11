@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.example.demo.exception.FloorServiceException;
 import com.example.demo.exception.HostelServiceException;
 import com.example.demo.exception.OrganizationServiceException;
-import com.example.demo.exception.AddressServiceExcpetion;
+import com.example.demo.exception.AddressServiceException;
 import com.example.demo.exception.BedServiceException;
 import com.example.demo.exception.BreakupServiceException;
 import com.example.demo.exception.BuildingServiceException;
@@ -58,15 +58,17 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<String>(hostelServiceException.getMessage(),hostelServiceException.getHttpStatus());
 	}
 	
-	@ExceptionHandler(exception = AddressServiceExcpetion.class)
-	public ResponseEntity<String> addressHostelServiceException(HostelServiceException hostelServiceException) {
-		return new ResponseEntity<String>(hostelServiceException.getMessage(),hostelServiceException.getHttpStatus());
+	@ExceptionHandler(exception = AddressServiceException.class)
+	public ResponseEntity<String> addressServiceException(AddressServiceException addressServiceException) {
+		return new ResponseEntity<String>(addressServiceException.getMessage(),addressServiceException.getHttpStatus());
 	}
 
+	
 	@ExceptionHandler(exception = OrganizationServiceException.class)
-	public ResponseEntity<String> organizationHostelServiceException(HostelServiceException hostelServiceException) {
-		return new ResponseEntity<String>(hostelServiceException.getMessage(),hostelServiceException.getHttpStatus());
+	public ResponseEntity<String> organizationServiceException(	OrganizationServiceException organizationServiceException) {
+		return new ResponseEntity<String>(organizationServiceException.getMessage(),organizationServiceException.getHttpStatus());
 	}
+	
 
          @ExceptionHandler(exception = UserServiceException.class)
        public ResponseEntity<String> handleUserServiceException(UserServiceException UserServiceException) {
