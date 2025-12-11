@@ -50,8 +50,6 @@ public class BreakupServiceImpl implements BreakupService {
 		
 	
 
-//	@Override
-//	public BreakupDto getByBedIdAndDuration(int id, int duration) {
-//
+
 
 }
