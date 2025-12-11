@@ -1,5 +1,8 @@
 package com.example.demo.dto;
 
+import java.time.LocalDate;
+import lombok.Data;
+@Data
 public class BreakupDto {
 	private int price;
 	private int duration;
@@ -10,8 +13,10 @@ public class BreakupDto {
 	private int buildingId;
 	private int hostelId;
 	private String hostelName;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	public BreakupDto(int price, int duration, int finalAmount, int bedNo, int roomNo, int floorNo, int buildingId,
-			int hostelId, String hostelName) {
+			int hostelId, String hostelName,LocalDate startDate, LocalDate endDate) {
 		super();
 		this.price = price;
 		this.duration = duration;
@@ -22,61 +27,11 @@ public class BreakupDto {
 		this.buildingId = buildingId;
 		this.hostelId = hostelId;
 		this.hostelName = hostelName;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	public int getDuration() {
-		return duration;
-	}
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
-	public int getFinalAmount() {
-		return finalAmount;
-	}
-	public void setFinalAmount(int finalAmount) {
-		this.finalAmount = finalAmount;
-	}
-	public int getBedNo() {
-		return bedNo;
-	}
-	public void setBedNo(int bedNo) {
-		this.bedNo = bedNo;
-	}
-	public int getRoomNo() {
-		return roomNo;
-	}
-	public void setRoomNo(int roomNo) {
-		this.roomNo = roomNo;
-	}
-	public int getFloorNo() {
-		return floorNo;
-	}
-	public void setFloorNo(int floorNo) {
-		this.floorNo = floorNo;
-	}
-	public int getBuildingId() {
-		return buildingId;
-	}
-	public void setBuildingId(int buildingId) {
-		this.buildingId = buildingId;
-	}
-	public int getHostelId() {
-		return hostelId;
-	}
-	public void setHostelId(int hostelId) {
-		this.hostelId = hostelId;
-	}
-	public String getHostelName() {
-		return hostelName;
-	}
-	public void setHostelName(String hostelName) {
-		this.hostelName = hostelName;
-	}
-
 	
 }
+	
+	
+	
