@@ -17,9 +17,9 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping("/updatepayment")
-    public ResponseEntity updatePayment(@RequestParam int orderId,@RequestParam int transactionId,@RequestParam boolean success,@RequestParam int paymentId) {
+    public ResponseEntity updatePayment(@RequestParam long orderId,@RequestParam long transactionId,@RequestParam boolean success,@RequestParam int bookingId) {
 
-        paymentService.updatePayment(orderId, transactionId, success, paymentId);
+        paymentService.updatePayment(orderId, transactionId, success, bookingId);
 
         return new ResponseEntity(Constant.PAYMENT_UPDATED, HttpStatus.OK);
     }

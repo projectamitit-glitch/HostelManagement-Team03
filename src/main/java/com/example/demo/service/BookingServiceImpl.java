@@ -47,30 +47,30 @@ public class BookingServiceImpl implements BookingService{
 	    	if (optionalBed.isEmpty()) {
 	    	    throw new BookingServiceException(ErrorConstant.BED_NOT_FOUND, HttpStatus.NOT_FOUND);
 	    	}
+	    	
 	    	Bed bed = optionalBed.get();
-
-
-	        Booking booking = new Booking();
+	    	
+	    	if (!"AVAILABLE".equalsIgnoreCase(bed.getStatus())) {
+	    	    throw new BookingServiceException(ErrorConstant.BED_NOT_AVAILABLE, HttpStatus.BAD_REQUEST);
+	    	}
+	    
+	    
+	    	Booking booking = new Booking();
 	        booking.setUserId(userId);
 	        booking.setBedId(bedId);
-	        booking.setFinalPrice(finalAmount);
+	        booking.setFinalAmount(finalAmount);
 	        booking.setCreatedDate(LocalDateTime.now());
 	        booking.setStatus("IN PROGRESS");
-
 	        bookingRepository.save(booking);
-
 	        
 	        Payment payment = new Payment();
 	        payment.setBooking(booking);
 	        payment.setStatus("PENDING");
-
-	        paymentRepository.save(payment);
-
-	        
 	        booking.setPayment(payment);
+	        
+	        paymentRepository.save(payment);
 	        bookingRepository.save(booking);
 
 	    }
-	}
-
-
+	    	
+}

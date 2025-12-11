@@ -23,18 +23,18 @@ public class PaymentServiceImpl implements PaymentService {
     private BookingRepository bookingRepository;
 
     @Override
-    public void updatePayment(int orderId, int transactionId, boolean success, int paymentId) {
+    public void updatePayment(long orderId, long transactionId, boolean success, int bookingId) {
 
-    	Optional<Payment> optionalPayment = paymentRepository.findById(paymentId);
+    	Optional<Booking> optionalBooking = bookingRepository.findById(bookingId);
 
-    	if (optionalPayment.isEmpty()) {
+    	if (optionalBooking.isEmpty()) {
     	    throw new PaymentServiceException(ErrorConstant.PAYMENT_NOT_FOUND,HttpStatus.NOT_FOUND);
     	}
 
-    	Payment payment = optionalPayment.get();
+    	Booking booking = optionalBooking.get();
 
 
-        Booking booking = payment.getBooking();
+       Payment payment = new Payment();
 
         payment.setOrderId(orderId);
         payment.setTransactionId(transactionId);

@@ -42,6 +42,6 @@ public class ErrorConstant {
 	public static final String AVAILABLE_BEDS_NOT_FOUND = "NO AVAILABLE BEDS FOUND";
 	public static final String INVALID_BED_DATA = "INVALID BED DATA FOUND";
 	public static final String PAYMENT_NOT_FOUND = "PAYMENT NOT FOUND";
-
+	public static final String BED_NOT_AVAILABLE = "BED_NOT_AVAILABLE";
 
 }
