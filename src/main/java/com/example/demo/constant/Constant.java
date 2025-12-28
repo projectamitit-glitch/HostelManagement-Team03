@@ -25,7 +25,8 @@ public class Constant {
 
 	public static final String FLOOR_DELETED="FLOOR DELETED SUCCESSFULLY.";
 	public static final String FLOORS_DELETED="ALL FLOORS DELETED SUCCESSFULLY.";
-
+	public static final String BOOKING_CREATED="BOOKING CREATED SUCCESSFULLY";
+    public static final String PAYMENT_UPDATED="PAYMENT UPDATED SUCCESSFULLY";
 	
 	
 	
