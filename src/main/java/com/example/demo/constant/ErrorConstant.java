@@ -13,7 +13,6 @@ public class ErrorConstant {
 	public static final String ORGANIZATION_DELETE_EXCEPTION = "ERROR OCCURRED WHILE DELETING THE BED.";
 	public static final String ADDRESS_NOT_ADDED_EXCEPTION = "ADDRESS NOT ADDED.";
 
-	public static final String ORGANIZATION_NOT_FOUND="ORGANIZATION NOT FOUND.";
 	public static final String BUILDING_NOT_FOUND = "BUILDING NOT FOUND.";
 	public static final String HOSTEL_NOT_FOUND = "HOSTEL NOT FOUND.";
 	public static final String BED_NOT_FOUND = "BED NOT FOUND.";
