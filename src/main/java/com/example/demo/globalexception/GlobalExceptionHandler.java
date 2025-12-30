@@ -68,8 +68,4 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<String>(hostelServiceException.getMessage(),hostelServiceException.getHttpStatus());
 	}
 
-	@ExceptionHandler(exception = OrganizationServiceException.class)
-	public ResponseEntity<String> organizationHostelServiceException(HostelServiceException hostelServiceException) {
-		return new ResponseEntity<String>(hostelServiceException.getMessage(),hostelServiceException.getHttpStatus());
 	}
-}
