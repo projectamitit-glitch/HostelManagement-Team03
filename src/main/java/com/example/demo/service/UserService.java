@@ -15,4 +15,6 @@ public interface UserService {
 	void deleteUser(int id);
 
 	void deleteAllUsers();
+	
+	String verifyOtp(String email, String otp);
 }

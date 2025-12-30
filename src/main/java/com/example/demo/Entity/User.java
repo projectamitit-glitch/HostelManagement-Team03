@@ -30,7 +30,11 @@ public class User {
 	private String guardianName;
 	private String guardianContact;
 
-	
+	//Used for email verfication
+	@Column(nullable = false)
+	private boolean emailVerified = false;
+	private String otp;
+	private LocalDateTime otpExpiryTime;
 
 	@CreationTimestamp
 	@Column(updatable = false)
@@ -180,4 +184,29 @@ public class User {
 	public void setGuardianContact(String guardianContact) {
 		this.guardianContact = guardianContact;
 	}
+
+	public boolean isEmailVerified() {
+		return emailVerified;
+	}
+
+	public void setEmailVerified(boolean emailVerified) {
+		this.emailVerified = emailVerified;
+	}
+
+	public String getOtp() {
+		return otp;
+	}
+
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
+
+	public LocalDateTime getOtpExpiryTime() {
+		return otpExpiryTime;
+	}
+
+	public void setOtpExpiryTime(LocalDateTime otpExpiryTime) {
+		this.otpExpiryTime = otpExpiryTime;
+	}
+	
 }
