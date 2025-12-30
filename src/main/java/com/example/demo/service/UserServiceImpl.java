@@ -1,10 +1,13 @@
 package com.example.demo.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Entity.User;
@@ -22,6 +25,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	BedRepository bedRepository;
+	
+	@Autowired
+    private JavaMailSender javaMailSender;
 
 	@Override
 	public void saveUser(UserDto userDto) {
@@ -45,8 +51,48 @@ public class UserServiceImpl implements UserService {
 		if (user2 == null) {
 			throw new UserServiceException(ErrorConstant.USER_SAVE_EXCEPTION, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		//Generate the opt
+		String otp = String.valueOf((int) (Math.random() * 900000) + 100000);
+        user.setOtp(otp);
+        user.setOtpExpiryTime(LocalDateTime.now().plusMinutes(5)); // OTP valid 5 mins
+        userRepository.save(user);
+        
+        // send the email
+        sendOtpEmail(user.getEmail(), otp);
+        
 	}
 
+	@Override
+	public String verifyOtp(String email, String otp) {
+
+	    User user = userRepository.findByEmail(email);
+
+	    if (user == null) {
+	        throw new UserServiceException(ErrorConstant.INVALID_EMAIL, HttpStatus.BAD_REQUEST);
+	    }
+
+	    if (user.getOtp() == null) {
+	        throw new UserServiceException(ErrorConstant.OTP_NOT_GENERATED, HttpStatus.BAD_REQUEST);
+	    }
+
+	    if (user.getOtpExpiryTime().isBefore(LocalDateTime.now())) {
+	        throw new UserServiceException(ErrorConstant.OTP_EXPIRED, HttpStatus.BAD_REQUEST);
+	    }
+
+	    if (!otp.equals(user.getOtp())) {
+	        throw new UserServiceException(ErrorConstant.INVALID_OTP, HttpStatus.BAD_REQUEST);
+	    }
+
+	    user.setEmailVerified(true);
+	    user.setOtp(null);
+	    user.setOtpExpiryTime(null);
+	    userRepository.save(user);
+
+	    return "Email verified successfully";
+	}
+
+	
 	@Override
 	public UserDto getUserById(int id) {
 
@@ -126,4 +172,16 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteAll(users);
 
 	}
+	
+	
+	private void sendOtpEmail(String email, String otp) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(email);
+        message.setSubject("Your OTP Verification Code");
+        message.setText("Your OTP is: " + otp);
+        javaMailSender.send(message);
+    }
+	
+
+	
 }

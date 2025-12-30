@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.constant.Constant;
@@ -27,6 +28,11 @@ public class UserController {
 	public ResponseEntity<String> saveUser(@RequestBody UserDto userDto) {
 		userService.saveUser(userDto);
 		return new ResponseEntity<>(Constant.USER_SAVED, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("user/verify-otp")
+	public String verifyOtp(@RequestParam String email, @RequestParam String otp) {
+		return userService.verifyOtp(email, otp);
 	}
 
 	@GetMapping("/{id}")
@@ -51,5 +57,7 @@ public class UserController {
 	public ResponseEntity<String> deleteAllUsers() {
 		userService.deleteAllUsers();
 		return new ResponseEntity<>(Constant.ALL_USER_DELETE, HttpStatus.OK);
+		
+		
 	}
 }

@@ -1,6 +1,10 @@
 package com.example.demo.dto;
 
+import lombok.Data;
+
+@Data
 public class UserDto {
+	
 	private String name;
 	private String email;
 	private String userName;
@@ -14,84 +18,5 @@ public class UserDto {
 	private String idProofNumber;
 	private String guardianName;
 	private String guardianContact;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getContactNo() {
-		return contactNo;
-	}
-	public void setContactNo(String contactNo) {
-		this.contactNo = contactNo;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public String getDateOfBirth() {
-		return dateOfBirth;
-	}
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-	public String getCurrentAddress() {
-		return currentAddress;
-	}
-	public void setCurrentAddress(String currentAddress) {
-		this.currentAddress = currentAddress;
-	}
-	public String getPermanentAddress() {
-		return permanentAddress;
-	}
-	public void setPermanentAddress(String permanentAddress) {
-		this.permanentAddress = permanentAddress;
-	}
-	public String getProfession() {
-		return profession;
-	}
-	public void setProfession(String profession) {
-		this.profession = profession;
-	}
-	public String getIdProofNumber() {
-		return idProofNumber;
-	}
-	public void setIdProofNumber(String idProofNumber) {
-		this.idProofNumber = idProofNumber;
-	}
-	public String getGuardianName() {
-		return guardianName;
-	}
-	public void setGuardianName(String guardianName) {
-		this.guardianName = guardianName;
-	}
-	public String getGuardianContact() {
-		return guardianContact;
-	}
-	public void setGuardianContact(String guardianContact) {
-		this.guardianContact = guardianContact;
-	}
-	
 
 }

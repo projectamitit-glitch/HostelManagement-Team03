@@ -4,14 +4,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import com.example.demo.exception.FloorServiceException;
-import com.example.demo.exception.HostelServiceException;
-import com.example.demo.exception.OrganizationServiceException;
+
 import com.example.demo.exception.AddressServiceExcpetion;
 import com.example.demo.exception.BedServiceException;
 import com.example.demo.exception.BreakupServiceException;
 import com.example.demo.exception.BuildingServiceException;
-
+import com.example.demo.exception.FloorServiceException;
+import com.example.demo.exception.HostelServiceException;
+import com.example.demo.exception.OrganizationServiceException;
 import com.example.demo.exception.RoomServiceException;
 import com.example.demo.exception.UserServiceException;
 
