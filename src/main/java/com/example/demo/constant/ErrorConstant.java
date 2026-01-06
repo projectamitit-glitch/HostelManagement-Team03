@@ -41,5 +41,11 @@ public class ErrorConstant {
 
 	public static final String AVAILABLE_BEDS_NOT_FOUND = "NO AVAILABLE BEDS FOUND";
 	public static final String INVALID_BED_DATA = "INVALID BED DATA FOUND";
+	
+	public static final String INVALID_EMAIL = "Invalid email";
+	 public static final String OTP_NOT_GENERATED = "OTP not generated or already verified";
+	 public static final String OTP_EXPIRED = "OTP expired";
+	 public static final String INVALID_OTP = "Invalid OTP";
+
 
 }

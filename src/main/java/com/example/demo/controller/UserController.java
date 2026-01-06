@@ -52,4 +52,9 @@ public class UserController {
 		userService.deleteAllUsers();
 		return new ResponseEntity<>(Constant.ALL_USER_DELETE, HttpStatus.OK);
 	}
+	
+	@PostMapping("/verifyOtp/{email}/{otp}")
+	public String verifyOtp(@PathVariable String email, @PathVariable String otp) {
+		return userService.verifyOtp(email, otp);
+	}
 }
